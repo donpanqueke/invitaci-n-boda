@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Boda - Estefanía & Álvaro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #f5f1eb 0%, #e8ddd4 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .invitation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .invitation-border {
+            border: 3px solid #d4af37;
+            margin: 20px;
+            border-radius: 10px;
+            padding: 40px;
+            background: linear-gradient(45deg, #fefefe 0%, #f9f9f9 100%);
+        }
+
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            text-align: center;
+            color: #8b4513;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .couple-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: #f0f0f0;
+            border: 2px dashed #d4af37;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder:hover {
+            background: #f8f8f8;
+            border-color: #b8941f;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .image-placeholder-text {
+            color: #888;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .bible-verse {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            text-align: center;
+            color: #34495e;
+            line-height: 1.6;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .bible-reference {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 15px;
+            color: #8b4513;
+        }
+
+        .invitation-text {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #2c3e50;
+            line-height: 1.7;
+            margin: 30px 0;
+        }
+
+        .event-details {
+            background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .event-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .event-location {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 20px;
+        }
+
+        .location-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .rsvp-section {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .rsvp-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #8b4513;
+            margin-bottom: 20px;
+        }
+
+        .rsvp-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .decorative-divider {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .decorative-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+        }
+
+        .decorative-divider span {
+            background: white;
+            padding: 0 20px;
+            color: #d4af37;
+            font-size: 1.5rem;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .invitation-border {
+                margin: 10px;
+                padding: 20px;
+            }
+            
+            .main-title {
+                font-size: 3rem;
+            }
+            
+            .couple-names {
+                font-size: 1.8rem;
+            }
+            
+            .event-date {
+                font-size: 1.5rem;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-container">
+        <div class="invitation-border">
+            <!-- Título Principal -->
+            <h1 class="main-title">NOS CASAMOS</h1>
+            
+            <!-- Nombres de la Pareja -->
+            <h2 class="couple-names">ESTEFANÍA GUERRERO & ÁLVARO PACHÓN</h2>
+            
+            <!-- Primera Imagen -->
+            <div class="image-placeholder" onclick="uploadImage('image1')">
+                <div class="image-placeholder-text" id="placeholder1">
+                    <p>📸 Haz clic para agregar una foto</p>
+                    <small>Imagen de la pareja</small>
+                </div>
+            </div>
+            <input type="file" id="image1" accept="image/*" style="display: none;" onchange="displayImage('image1', 'placeholder1')">
+            
+            <!-- Versículo Bíblico y Mensaje -->
+            <div class="bible-verse">
+                <p>El amor nunca se da por vencido jamás pierde la fe. Siempre tiene esperanzas y se mantiene firme en toda circunstancia.</p>
+                <div class="bible-reference">1 Corintios 13</div>
+            </div>
+            
+            <p class="invitation-text">
+                Nos casamos y queremos que nos acompañes en este gran día,<br>
+                Con la bendición de Dios y nuestros padres.
+            </p>
+            
+            <!-- Segunda Imagen -->
+            <div class="image-placeholder" onclick="uploadImage('image2')">
+                <div class="image-placeholder-text" id="placeholder2">
+                    <p>📸 Haz clic para agregar una foto</p>
+                    <small>Imagen especial</small>
+                </div>
+            </div>
+            <input type="file" id="image2" accept="image/*" style="display: none;" onchange="displayImage('image2', 'placeholder2')">
+            
+            <div class="decorative-divider">
+                <span>❤️</span>
+            </div>
+            
+            <!-- Detalles del Evento -->
+            <div class="event-details">
+                <div class="event-date">
+                    <span>📅</span>
+                    <span>14 de Noviembre 2025 - 5:00 PM</span>
+                </div>
+                
+                <div class="event-location">
+                    <div>Lugar</div>
+                    <div class="location-name">Hacienda La Esperanza</div>
+                </div>
+            </div>
+            
+            <!-- Tercera Imagen (Lugar) -->
+            <div class="image-placeholder" onclick="uploadImage('image3')">
+                <div class="image-placeholder-text" id="placeholder3">
+                    <p>📸 Haz clic para agregar una foto</p>
+                    <small>Imagen del lugar</small>
+                </div>
+            </div>
+            <input type="file" id="image3" accept="image/*" style="display: none;" onchange="displayImage('image3', 'placeholder3')">
+            
+            <div class="decorative-divider">
+                <span>💒</span>
+            </div>
+            
+            <!-- Sección de Confirmación -->
+            <div class="rsvp-section">
+                <h3 class="rsvp-title">Confirmar Asistencia</h3>
+                
+                <form class="rsvp-form" onsubmit="submitRSVP(event)">
+                    <div class="form-group">
+                        <label for="guestName">Nombre Completo *</label>
+                        <input type="text" id="guestName" name="guestName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guestEmail">Correo Electrónico</label>
+                        <input type="email" id="guestEmail" name="guestEmail">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guestPhone">Teléfono</label>
+                        <input type="tel" id="guestPhone" name="guestPhone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="attendance">¿Confirmas tu asistencia? *</label>
+                        <select id="attendance" name="attendance" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="si">Sí, asistiré</option>
+                            <option value="no">No podré asistir</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guestCount">Número de acompañantes</label>
+                        <select id="guestCount" name="guestCount">
+                            <option value="0">Solo yo</option>
+                            <option value="1">1 acompañante</option>
+                            <option value="2">2 acompañantes</option>
+                            <option value="3">3 acompañantes</option>
+                            <option value="4">4 o más acompañantes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="specialRequests">Comentarios o solicitudes especiales</label>
+                        <textarea id="specialRequests" name="specialRequests" rows="3" placeholder="Alergias alimentarias, necesidades especiales, etc."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Confirmar Asistencia</button>
+                    
+                    <div class="success-message" id="successMessage">
+                        ¡Gracias por confirmar tu asistencia! Nos vemos en nuestra boda. ❤️
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para manejar la carga de imágenes
+        function uploadImage(inputId) {
+            document.getElementById(inputId).click();
+        }
+
+        function displayImage(inputId, placeholderId) {
+            const input = document.getElementById(inputId);
+            const placeholder = document.getElementById(placeholderId);
+            const file = input.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    placeholder.innerHTML = '';
+                    placeholder.appendChild(img);
+                    
+                    // Guardar imagen en localStorage
+                    localStorage.setItem(inputId + '_image', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Función para manejar el envío del formulario RSVP
+        function submitRSVP(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const rsvpData = {
+                name: formData.get('guestName'),
+                email: formData.get('guestEmail'),
+                phone: formData.get('guestPhone'),
+                attendance: formData.get('attendance'),
+                guestCount: formData.get('guestCount'),
+                specialRequests: formData.get('specialRequests'),
+                timestamp: new Date().toISOString()
+            };
+
+            // Obtener confirmaciones existentes del localStorage
+            let existingRSVPs = JSON.parse(localStorage.getItem('weddingRSVPs')) || [];
+            
+            // Agregar nueva confirmación
+            existingRSVPs.push(rsvpData);
+            
+            // Guardar en localStorage
+            localStorage.setItem('weddingRSVPs', JSON.stringify(existingRSVPs));
+            
+            // Mostrar mensaje de éxito
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Limpiar formulario
+            event.target.reset();
+            
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+
+            console.log('RSVP guardado:', rsvpData);
+            console.log('Todas las confirmaciones:', existingRSVPs);
+        }
+
+        // Cargar imágenes guardadas al cargar la página
+        window.onload = function() {
+            ['image1', 'image2', 'image3'].forEach(imageId => {
+                const savedImage = localStorage.getItem(imageId + '_image');
+                if (savedImage) {
+                    const placeholder = document.getElementById('placeholder' + imageId.slice(-1));
+                    const img = document.createElement('img');
+                    img.src = savedImage;
+                    placeholder.innerHTML = '';
+                    placeholder.appendChild(img);
+                }
+            });
+        };
+
+        // Función para ver todas las confirmaciones (para administración)
+        function viewAllRSVPs() {
+            const rsvps = JSON.parse(localStorage.getItem('weddingRSVPs')) || [];
+            console.table(rsvps);
+            return rsvps;
+        }
+
+        // Función para exportar confirmaciones
+        function exportRSVPs() {
+            const rsvps = JSON.parse(localStorage.getItem('weddingRSVPs')) || [];
+            const dataStr = JSON.stringify(rsvps, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = 'confirmaciones_boda.json';
+            link.click();
+        }
+    </script>
+</body>
+</html>
